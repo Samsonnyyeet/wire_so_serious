@@ -1,0 +1,18 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: service-disruption
+  namespace: default  # Explicitly set to default
+spec:
+  selector:
+    labelSelectors:
+      app: nginx
+  mode: all
+  action: partition
+  direction: to
+  target:
+    mode: all
+    selector:
+      namespaces:
+      - default
+  duration: "120s"

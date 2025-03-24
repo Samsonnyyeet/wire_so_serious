@@ -1,0 +1,17 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: stress-chaos
+spec:
+  selector:
+    labelSelectors:
+      app: nginx
+  mode: all
+  stressors:
+    memory:
+      workers: 2
+      size: "800MB"  # Changed from "800Mi" to "800MB"
+    cpu:
+      workers: 2
+      load: 100
+  duration: "300s"

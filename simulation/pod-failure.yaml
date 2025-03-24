@@ -1,0 +1,13 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: pod-failure
+  namespace: default  # Explicitly set to default
+spec:
+  selector:
+    labelSelectors:
+      app: nginx
+  mode: one
+  action: pod-kill
+  duration: "300s"
+  gracePeriod: 30  # Wait 30 seconds between kills
